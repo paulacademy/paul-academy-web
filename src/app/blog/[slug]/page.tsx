@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { JsonLd } from '@/components/JsonLd'
+import { BlogViewTracker } from '@/components/BlogViewTracker'
 import { getPostBySlug, getAllPosts } from '@/lib/blog'
 
 interface PageProps {
@@ -51,6 +52,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={articleJsonLd} />
+      <BlogViewTracker slug={post.slug} category={post.category} />
 
       <div className="bg-white min-h-screen py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
