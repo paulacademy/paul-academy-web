@@ -110,18 +110,19 @@ export default async function HomePage() {
             className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
             style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-primary)' }}
           >
-            한국·해외대학 입시 전문
+            재외국민 특례입학 전문 컨설팅
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
-            목표 대학 합격,
+            3특? 12특? 헷갈리는 특례입학,
             <br />
-            <span style={{ color: 'var(--color-accent-light)' }}>폴아카데미</span>와 함께라면
+            <span style={{ color: 'var(--color-accent-light)' }}>폴아카데미</span>가 처음부터
             <br />
-            가능합니다
+            끝까지 안내합니다
           </h1>
           <p className="text-lg sm:text-xl text-blue-200 max-w-2xl mx-auto mb-10">
-            SKY·의치한부터 미국 아이비리그까지,
-            개인 맞춤 1:1 컨설팅으로 합격의 문을 열어드립니다.
+            해외에서 쌓은 경험, 한국 최상위 대학 입학으로 이어집니다.
+            <br className="hidden sm:block" />
+            10년 이상 특례입학 전문 노하우 | 무료 자격 진단 상담
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -130,13 +131,13 @@ export default async function HomePage() {
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold transition-all hover:scale-105 active:scale-95 shadow-lg"
               style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-primary)' }}
             >
-              무료 상담 신청하기 →
+              무료 특례 자격 진단 신청하기 →
             </Link>
             <Link
-              href="/#services"
+              href="/admissions/korea-special"
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-semibold text-white border-2 border-white/30 hover:border-white/60 transition-all"
             >
-              서비스 알아보기
+              3특/12특 차이 알아보기
             </Link>
           </div>
 

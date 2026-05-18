@@ -10,7 +10,7 @@ export interface BlogPost {
 
 const POSTS: BlogPost[] = [
   {
-    slug: '2025-수시-전략-총정리',
+    slug: 'susi-strategy-2025',
     title: '2025학년도 수시 전략 총정리 — SKY 합격을 위한 핵심 포인트',
     summary:
       '2025학년도 수시에서 서울대·연세대·고려대 합격을 위해 반드시 알아야 할 전략을 정리했습니다. 학생부 관리부터 자기소개서까지.',
@@ -27,7 +27,7 @@ const POSTS: BlogPost[] = [
     ],
   },
   {
-    slug: '미국-대학-지원-타임라인',
+    slug: 'us-college-application-timeline',
     title: '미국 대학 지원 타임라인 — 고2부터 시작해야 하는 이유',
     summary:
       '미국 명문대 지원은 최소 2년의 준비가 필요합니다. 단계별 타임라인과 각 시기에 집중해야 할 항목을 안내합니다.',
@@ -44,7 +44,7 @@ const POSTS: BlogPost[] = [
     ],
   },
   {
-    slug: '의대-입시-변화-2026',
+    slug: 'medical-school-admissions-2026',
     title: '2026학년도 의대 정원 확대 — 입시 전략 어떻게 달라지나?',
     summary:
       '의대 정원 확대로 인한 입시 환경 변화를 분석하고, 이에 맞는 수시·정시 전략을 제시합니다.',
@@ -61,7 +61,7 @@ const POSTS: BlogPost[] = [
     ],
   },
   {
-    slug: '수능-국어-1등급-전략',
+    slug: 'csat-korean-grade1-strategy',
     title: '수능 국어 1등급 전략 — 문학·비문학 시간 배분의 모든 것',
     summary:
       '국어 1등급은 실력보다 전략입니다. 80분 안에 45문항을 풀어내는 시간 배분법과 오답 패턴 분석을 정리했습니다.',
@@ -78,7 +78,7 @@ const POSTS: BlogPost[] = [
     ],
   },
   {
-    slug: '학생부-종합-합격-노하우',
+    slug: 'student-record-comprehensive-tips',
     title: '학생부 종합전형 합격 노하우 — 담임 선생님도 모르는 세특 관리법',
     summary:
       '학생부종합전형의 당락을 가르는 세부능력 및 특기사항. 어떤 기록이 입학사정관의 눈길을 끄는지 구체적으로 알려드립니다.',

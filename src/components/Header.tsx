@@ -3,7 +3,9 @@ import { MobileMenu } from './MobileMenu'
 
 const NAV_LINKS = [
   { href: '/#services', label: '서비스' },
-  { href: '/#why-paul', label: '왜 폴아카데미' },
+  { href: '/admissions/korea-special', label: '특례입학 가이드' },
+  { href: '/exam-strategy/sat-ap', label: 'SAT/AP' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/blog', label: '입시정보' },
   { href: '/contact', label: '오시는길' },
 ]
