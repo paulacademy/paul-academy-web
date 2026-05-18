@@ -15,7 +15,7 @@ const SERVICES = [
   {
     icon: '🎓',
     title: '국내 명문대 입시',
-    description: 'SKY, 의치한, 포스텍 등 국내 최상위 대학 수시·정시 전략 설계 및 맞춤 관리',
+    description: 'SKY, 의치한, 포스텍 등 국내 최상위 대학 재외국민 특별전형 전략 설계 및 맞춤 관리',
   },
   {
     icon: '🌐',
@@ -23,9 +23,10 @@ const SERVICES = [
     description: '미국 아이비리그·탑스쿨, 영국 옥스브리지 등 해외 대학 지원 전략 및 에세이 컨설팅',
   },
   {
-    icon: '📝',
-    title: '내신·수능 관리',
-    description: '체계적 학습 계획 수립과 개인별 취약점 분석으로 내신 및 수능 성적 극대화',
+    icon: '🏛️',
+    title: '재외국민 특별전형',
+    description: '3특·12특 자격 검토부터 SAT 점수 전략, 대학별 지원 계획까지 재외국민 특별전형 전 과정을 전담 관리합니다',
+    href: '/admissions/korea-special',
   },
   {
     icon: '💼',
@@ -169,21 +170,35 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {SERVICES.map(({ icon, title, description }) => (
-              <div
-                key={title}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-              >
-                <div className="text-4xl mb-4">{icon}</div>
-                <h3
-                  className="text-lg font-bold mb-3"
-                  style={{ color: 'var(--color-primary)' }}
-                >
-                  {title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
-              </div>
-            ))}
+            {SERVICES.map(({ icon, title, description, href }) => {
+              const cardContent = (
+                <>
+                  <div className="text-4xl mb-4">{icon}</div>
+                  <h3
+                    className="text-lg font-bold mb-3"
+                    style={{ color: 'var(--color-primary)' }}
+                  >
+                    {title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+                  {href && (
+                    <span className="mt-3 inline-block text-xs font-medium" style={{ color: 'var(--color-primary)' }}>
+                      자세히 보기 →
+                    </span>
+                  )}
+                </>
+              )
+              const cardClass = "bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+              return href ? (
+                <Link key={title} href={href} className={cardClass}>
+                  {cardContent}
+                </Link>
+              ) : (
+                <div key={title} className={cardClass}>
+                  {cardContent}
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
