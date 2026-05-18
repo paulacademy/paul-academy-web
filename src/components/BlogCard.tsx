@@ -14,7 +14,7 @@ export function BlogCard({ post }: BlogCardProps) {
 
   return (
     <article className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
-      <div className="p-6">
+      <Link href={`/blog/${post.slug}`} className="block p-6 hover:no-underline">
         <div className="flex items-center gap-2 mb-3">
           <span
             className="text-xs font-semibold px-2.5 py-1 rounded-full"
@@ -28,13 +28,8 @@ export function BlogCard({ post }: BlogCardProps) {
           <span className="text-xs text-gray-400">{post.readingMinutes}분 읽기</span>
         </div>
 
-        <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 leading-snug">
-          <Link
-            href={`/blog/${post.slug}`}
-            className="hover:text-[var(--color-primary)] transition-colors"
-          >
-            {post.title}
-          </Link>
+        <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 leading-snug hover:text-[var(--color-primary)] transition-colors">
+          {post.title}
         </h3>
 
         <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
@@ -44,7 +39,7 @@ export function BlogCard({ post }: BlogCardProps) {
         <time className="text-xs text-gray-400" dateTime={post.publishedAt}>
           {formattedDate}
         </time>
-      </div>
+      </Link>
     </article>
   )
 }
