@@ -28,18 +28,27 @@ export function Footer() {
           <div>
             <p className="text-white font-semibold mb-3">연락처</p>
             <address className="not-italic text-sm space-y-1">
-              <p>전화: <a href="tel:+821000000000" className="hover:text-white transition-colors">010-0000-0000</a></p>
+              <p>전화: <a href="tel:+8225582715" className="hover:text-white transition-colors">02-558-2715</a></p>
               <p>이메일: <a href="mailto:admin@paulacademy.net" className="hover:text-white transition-colors">admin@paulacademy.net</a></p>
-              <p>운영시간: 평일 09:00–21:00</p>
+              <p>상담시간: 월–금 09:00–19:00 (주말 휴무)</p>
+              <p className="mt-2 text-gray-500 text-xs">서울특별시 강남구 삼성로 85길 32 3,4층</p>
             </address>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {year} 폴아카데미. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-gray-300 transition-colors">개인정보처리방침</Link>
-            <Link href="/terms" className="hover:text-gray-300 transition-colors">이용약관</Link>
+        <div className="mt-8 pt-8 border-t border-gray-700 space-y-3">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            회사명: 주식회사 폴아카데미 | 대표이사: 김동현 | 사업자등록번호: 303-86-00830 | 통신판매업신고: 제 2018-서울강남-01234호
+          </p>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            학원명: 폴아카데미어학학원 | 학원설립·운영등록 번호: 제 10719호
+          </p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-xs text-gray-500">© {year} PaulAcademy. All Rights Reserved.</p>
+            <div className="flex gap-4 text-xs text-gray-500">
+              <Link href="/privacy" className="hover:text-gray-300 transition-colors">개인정보처리방침</Link>
+              <Link href="/terms" className="hover:text-gray-300 transition-colors">이용약관</Link>
+            </div>
           </div>
         </div>
       </div>

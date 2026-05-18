@@ -5,7 +5,7 @@ import { JsonLd } from '@/components/JsonLd'
 export const metadata: Metadata = {
   title: '오시는길 | 연락처',
   description:
-    '폴아카데미 위치 안내 및 연락처. 전화·이메일로 문의하시거나 직접 방문하세요.',
+    '폴아카데미 위치 안내 및 연락처. 서울 강남구 삼성로 85길 32. 전화 02-558-2715.',
 }
 
 const LOCATION_JSON_LD = {
@@ -14,20 +14,21 @@ const LOCATION_JSON_LD = {
   name: '폴아카데미',
   description: '한국·해외대학 입시 전문학원',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://paulacademy.net',
-  telephone: '+821000000000',
+  telephone: '+82-2-558-2715',
   email: 'admin@paulacademy.net',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '삼성로 85길 32 3,4층',
+    addressLocality: '강남구',
+    addressRegion: '서울특별시',
+    addressCountry: 'KR',
+  },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       opens: '09:00',
-      closes: '21:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Saturday', 'Sunday'],
-      opens: '10:00',
-      closes: '18:00',
+      closes: '19:00',
     },
   ],
 }
@@ -36,9 +37,9 @@ const CONTACT_METHODS = [
   {
     icon: '📞',
     title: '전화 상담',
-    value: '010-0000-0000',
-    description: '평일 09:00–21:00, 주말 10:00–18:00',
-    action: { label: '전화하기', href: 'tel:+821000000000' },
+    value: '02-558-2715',
+    description: '월–금 09:00–19:00 (주말·공휴일 휴무)',
+    action: { label: '전화하기', href: 'tel:+8225582715' },
   },
   {
     icon: '✉️',
@@ -74,6 +75,9 @@ const FAQS = [
     a: '아닙니다. 상담은 정보 제공과 학생 분석이 목적입니다. 충분한 검토 후 결정하셔도 됩니다.',
   },
 ]
+
+const MAP_SRC =
+  'https://maps.google.com/maps?q=서울특별시+강남구+삼성로+85길+32&output=embed&z=16&hl=ko'
 
 export default function ContactPage() {
   return (
@@ -116,7 +120,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Map Placeholder */}
+          {/* Map */}
           <div className="bg-white rounded-2xl p-6 border border-gray-100 mb-12">
             <h2
               className="text-xl font-bold mb-4"
@@ -124,14 +128,22 @@ export default function ContactPage() {
             >
               오시는길
             </h2>
-            <div className="bg-gray-100 rounded-xl h-64 flex items-center justify-center mb-4">
-              <p className="text-gray-400 text-sm">지도 준비 중 (위치 확정 후 업데이트 예정)</p>
+            <div className="rounded-xl overflow-hidden mb-4" style={{ height: '280px' }}>
+              <iframe
+                src={MAP_SRC}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="폴아카데미 위치"
+              />
             </div>
             <address className="not-italic text-gray-600 text-sm space-y-1">
-              <p>📍 주소: 서울특별시 (상세 주소 확정 후 업데이트)</p>
-              <p>🚇 지하철: (역명 확정 후 업데이트)</p>
-              <p>🚌 버스: (노선 확정 후 업데이트)</p>
-              <p>🅿️ 주차: (주차 안내 확정 후 업데이트)</p>
+              <p>📍 주소: 서울특별시 강남구 삼성로 85길 32 3,4층</p>
+              <p>📞 전화: 02-558-2715 / FAX: 0503-8379-5515</p>
+              <p>🕐 상담시간: 월–금 09:00–19:00 (주말·공휴일 휴무)</p>
             </address>
           </div>
 

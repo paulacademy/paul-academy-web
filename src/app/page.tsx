@@ -69,8 +69,17 @@ const ORGANIZATION_JSON_LD = {
   name: '폴아카데미',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://paulacademy.net',
   description: '한국 및 해외 명문대학 입시 전문학원',
+  telephone: '+82-2-558-2715',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '삼성로 85길 32 3,4층',
+    addressLocality: '강남구',
+    addressRegion: '서울특별시',
+    addressCountry: 'KR',
+  },
   contactPoint: {
     '@type': 'ContactPoint',
+    telephone: '+82-2-558-2715',
     contactType: 'customer service',
     availableLanguage: 'Korean',
     email: 'admin@paulacademy.net',
