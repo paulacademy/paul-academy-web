@@ -11,7 +11,18 @@ const TARGET_TYPES = ['국내', '해외', '국내+해외'] as const
 function FieldError({ errors, field }: { errors?: Record<string, string[]>; field: string }) {
   const messages = errors?.[field]
   if (!messages?.length) return null
-  return <p className="mt-1 text-sm text-red-600">{messages[0]}</p>
+  return (
+    <p role="alert" aria-live="polite" className="mt-1 text-sm text-red-600">
+      {messages[0]}
+    </p>
+  )
+}
+
+function formatPhone(value: string) {
+  const digits = value.replace(/\D/g, '')
+  if (digits.length <= 3) return digits
+  if (digits.length <= 7) return `${digits.slice(0, 3)}-${digits.slice(3)}`
+  return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7, 11)}`
 }
 
 export function ConsultationForm() {
@@ -22,15 +33,40 @@ export function ConsultationForm() {
     INITIAL_STATE
   )
 
+  function handlePhoneInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const formatted = formatPhone(e.target.value)
+    e.target.value = formatted
+  }
+
   if (state?.success) {
     return (
-      <div className="text-center py-12 px-6">
-        <div className="text-5xl mb-4">✅</div>
+      <div className="text-center py-12 px-6 animate-scale-in">
+        <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: 'var(--color-primary-50)' }}>
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M7 16l6 6 12-12" stroke="var(--color-success)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-3">신청 완료!</h2>
-        <p className="text-gray-600 text-lg">{state.message}</p>
-        <p className="text-gray-500 text-sm mt-4">
-          연락처를 확인해 주세요. 담당자가 곧 연락드립니다.
+        <p className="text-gray-600 text-lg mb-2">{state.message}</p>
+        <p className="text-gray-500 text-sm mb-8">
+          <strong>1영업일 이내</strong>에 담당자가 연락드립니다.
         </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="/blog"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold border-2 transition-all hover:bg-gray-50"
+            style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
+          >
+            입시 정보 보기
+          </a>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90"
+            style={{ backgroundColor: 'var(--color-primary)' }}
+          >
+            홈으로
+          </a>
+        </div>
       </div>
     )
   }
@@ -67,7 +103,10 @@ export function ConsultationForm() {
           type="tel"
           required
           autoComplete="tel"
+          inputMode="numeric"
           placeholder="010-1234-5678"
+          maxLength={13}
+          onChange={handlePhoneInput}
           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all"
         />
         <FieldError errors={errors} field="phone" />

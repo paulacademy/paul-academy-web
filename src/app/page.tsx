@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/JsonLd'
 import { BlogCard } from '@/components/BlogCard'
+import { StickyMobileCta } from '@/components/StickyMobileCta'
 import { getFeaturedPosts } from '@/lib/blog'
 
 export const metadata: Metadata = {
@@ -92,6 +93,7 @@ export default async function HomePage() {
   return (
     <>
       <JsonLd data={ORGANIZATION_JSON_LD} />
+      <StickyMobileCta />
 
       {/* Hero Section */}
       <section
@@ -117,7 +119,7 @@ export default async function HomePage() {
             <br />
             가능합니다
           </h1>
-          <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+          <p className="text-lg sm:text-xl text-blue-200 max-w-2xl mx-auto mb-10">
             SKY·의치한부터 미국 아이비리그까지,
             개인 맞춤 1:1 컨설팅으로 합격의 문을 열어드립니다.
           </p>
@@ -236,7 +238,7 @@ export default async function HomePage() {
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
             지금 바로 무료 상담을 받아보세요
           </h2>
-          <p className="text-blue-100 text-lg mb-8">
+          <p className="text-blue-200 text-lg mb-8">
             30분 무료 입시 상담으로 우리 아이의 가능성을 확인하세요
           </p>
           <Link

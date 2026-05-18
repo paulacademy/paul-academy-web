@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { MobileMenu } from './MobileMenu'
 
 const NAV_LINKS = [
   { href: '/#services', label: '서비스' },
@@ -22,6 +23,7 @@ export function Header() {
             <span className="text-sm font-medium text-gray-500 hidden sm:block">아카데미</span>
           </Link>
 
+          {/* 데스크톱 네비게이션 */}
           <nav aria-label="주요 메뉴" className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(({ href, label }) => (
               <Link
@@ -34,13 +36,19 @@ export function Header() {
             ))}
           </nav>
 
-          <Link
-            href="/consultation"
-            className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
-            style={{ backgroundColor: 'var(--color-primary)' }}
-          >
-            무료 상담 신청
-          </Link>
+          <div className="flex items-center gap-2">
+            {/* 데스크톱 CTA */}
+            <Link
+              href="/consultation"
+              className="hidden md:inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+              style={{ backgroundColor: 'var(--color-primary)' }}
+            >
+              무료 상담 신청
+            </Link>
+
+            {/* 모바일 메뉴 (햄버거 + 드로어) */}
+            <MobileMenu />
+          </div>
         </div>
       </div>
     </header>
