@@ -90,10 +90,12 @@ export default async function BlogPostPage({ params }: PageProps) {
               </time>
             </header>
 
-            <div className="prose prose-lg max-w-none text-gray-700">
-              <p className="text-gray-500 italic border-l-4 pl-4 border-blue-200">
-                이 글은 샘플 콘텐츠입니다. 실제 콘텐츠는 곧 업데이트될 예정입니다.
-              </p>
+            <div className="prose prose-lg max-w-none text-gray-700 space-y-5">
+              {post.body.map((paragraph, index) => (
+                <p key={index} className="leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </article>
 
