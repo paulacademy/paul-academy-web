@@ -1,12 +1,14 @@
 'use server'
 
 import { z } from 'zod'
+import { sendConsultationEmails } from '@/lib/email'
 
 const ConsultationSchema = z.object({
   name: z.string().min(2, '이름은 2자 이상이어야 합니다').max(50),
   phone: z
     .string()
     .regex(/^01[0-9]{1}-?[0-9]{3,4}-?[0-9]{4}$/, '올바른 전화번호를 입력해 주세요'),
+  email: z.string().email('올바른 이메일 주소를 입력해 주세요').optional().or(z.literal('')),
   grade: z.enum(['중1', '중2', '중3', '고1', '고2', '고3', '졸업생', '기타']),
   targetType: z.enum(['국내', '해외', '국내+해외']),
   targetUniversity: z.string().max(200).optional(),
@@ -29,6 +31,7 @@ export async function submitConsultation(
   const raw = {
     name: formData.get('name'),
     phone: formData.get('phone'),
+    email: formData.get('email') || undefined,
     grade: formData.get('grade'),
     targetType: formData.get('targetType'),
     targetUniversity: formData.get('targetUniversity') || undefined,
@@ -47,18 +50,26 @@ export async function submitConsultation(
     return { success: false, errors }
   }
 
-  // TODO: Replace with actual CRM/email integration
-  // For now, log the submission (server-side only, safe)
-  console.log('[Consultation submitted]', {
-    name: parsed.data.name,
-    grade: parsed.data.grade,
-    targetType: parsed.data.targetType,
-    submittedAt: new Date().toISOString(),
+  const { name, phone, email, grade, targetType, targetUniversity, targetMajor, message } =
+    parsed.data
+
+  // Fire emails without blocking the response — graceful degradation on failure
+  sendConsultationEmails({
+    name,
+    phone,
+    email: email || undefined,
+    grade,
+    targetType,
+    targetUniversity,
+    targetMajor,
+    message,
+    submittedAt: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+  }).catch((err) => {
+    console.error('[consultation] Email send error (non-fatal):', err)
   })
 
   return {
     success: true,
-    message:
-      '상담 신청이 접수되었습니다. 1영업일 내에 연락드리겠습니다.',
+    message: '상담 신청이 접수되었습니다. 1영업일 내에 연락드리겠습니다.',
   }
 }

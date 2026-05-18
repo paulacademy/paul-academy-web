@@ -73,6 +73,23 @@ export function ConsultationForm() {
         <FieldError errors={errors} field="phone" />
       </div>
 
+      {/* Email */}
+      <div>
+        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1.5">
+          이메일 (선택)
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          placeholder="example@gmail.com"
+          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all"
+        />
+        <p className="mt-1 text-xs text-gray-500">입력 시 신청 확인 이메일을 발송해 드립니다.</p>
+        <FieldError errors={errors} field="email" />
+      </div>
+
       {/* Grade */}
       <div>
         <label htmlFor="grade" className="block text-sm font-semibold text-gray-700 mb-1.5">
